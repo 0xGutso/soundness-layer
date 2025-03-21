@@ -33,7 +33,10 @@ sleep 2
 # Soundness kurulumu
 echo "Soundness kuruluyor..."
 curl -sSL https://raw.githubusercontent.com/soundnesslabs/soundness-layer/main/soundnessup/install.sh -o install.sh
-cat install.sh  # İncelemek için
+if [ ! -s install.sh ]; then
+    echo "Hata: install.sh dosyası boş veya eksik. Lütfen URL'yi kontrol edin!"
+    exit 1
+fi
 bash install.sh
 source ~/.bashrc
 
